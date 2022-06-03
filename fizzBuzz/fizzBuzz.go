@@ -9,5 +9,6 @@ func FizzBuzz(number int) (result string) {
 	if number%5 == 0 {
 		return "Buzz"
 	}
+
 	return strconv.Itoa(number)
 }
