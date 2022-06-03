@@ -6,11 +6,15 @@ import (
 )
 
 func Analyse(text string) (topWords []string, countWords int) {
-	words := strings.Fields(text)
+	words := getParsedWords(text)
 
 	keys := sortWordsByOccurrences(words)
 
 	return keys, len(words)
+}
+
+func getParsedWords(text string) []string {
+	return strings.Fields(text)
 }
 
 func sortWordsByOccurrences(words []string) []string {
@@ -27,17 +31,23 @@ func createWordsMap(words []string) (map[string]int, []string) {
 	keys := make([]string, 0, len(words))
 
 	for _, word := range words {
-		word := strings.ToLower(word)
-		replacer := strings.NewReplacer(",", "", ".", "")
-		word = replacer.Replace(word)
+		normalizeWord := normalizeWord(word)
 
-		occurrences, found := wordsMap[word]
+		occurrences, found := wordsMap[normalizeWord]
 		if found {
-			wordsMap[word] = occurrences + 1
+			wordsMap[normalizeWord] = occurrences + 1
 		} else {
-			wordsMap[word] = 1
-			keys = append(keys, word)
+			wordsMap[normalizeWord] = 1
+			keys = append(keys, normalizeWord)
 		}
 	}
 	return wordsMap, keys
+}
+
+func normalizeWord(word string) string {
+	replacer := strings.NewReplacer(",", "", ".", "")
+
+	wordNormalized := strings.ToLower(word)
+
+	return replacer.Replace(wordNormalized)
 }
