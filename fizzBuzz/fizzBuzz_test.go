@@ -18,7 +18,7 @@ func TestFizzBuzz(t *testing.T) {
 		t.Run(test.name, func(t *testing.T) {
 			got := FizzBuzz(test.arg)
 			if test.wantResult != got {
-				t.Errorf("expectec FizzBuzz 1, got: %s", got)
+				t.Errorf("expectec FizzBuzz %s, got: %s", test.wantResult, got)
 			}
 		})
 	}

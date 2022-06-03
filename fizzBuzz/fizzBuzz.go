@@ -1,8 +1,13 @@
 package fizzBuzz
 
-import "strconv"
+import (
+	"strconv"
+)
 
 func FizzBuzz(number int) (result string) {
+	if number%3 == 0 && number%5 == 0 {
+		return "FizzBuzz"
+	}
 	if number%3 == 0 {
 		return "Fizz"
 	}
