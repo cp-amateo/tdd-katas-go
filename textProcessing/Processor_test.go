@@ -13,6 +13,7 @@ func Test_analyse(t *testing.T) {
 		wantCountWords int
 	}{
 		{"analyse Hello", "Hello", []string{"Hello"}, 1},
+		{"analyse Hello world", "Hello", []string{"Hello", "world"}, 2},
 	}
 
 	for _, test := range tests {
