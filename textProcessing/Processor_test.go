@@ -12,13 +12,10 @@ func Test_analyse(t *testing.T) {
 		wantTopWords   []string
 		wantCountWords int
 	}{
-		{"Analyse Hello", "Hello", []string{"Hello"}, 1},
-		{"Analyse Hello world", "Hello world", []string{"Hello", "world"}, 2},
-		{"Analyse Hello world world", "Hello world world", []string{"world", "Hello"}, 3},
-		{"Analyse full text",
-			"Hello, this is an example for you to practice. You should grab\nthis text and make it as your test case.",
-			[]string{"you", "this", "your", "to", "text", "test", "should", "practice", "make", "it"},
-			21},
+		{"Analyse Hello", "Hello", []string{"hello"}, 1},
+		{"Analyse Hello world", "Hello world", []string{"hello", "world"}, 2},
+		{"Analyse Hello world world", "Hello world world", []string{"world", "hello"}, 3},
+		{"Analyse full example", "Hello, world world world. Hello folk", []string{"world", "hello", "folk"}, 6},
 	}
 
 	for _, test := range tests {

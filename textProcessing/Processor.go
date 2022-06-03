@@ -16,7 +16,7 @@ func Analyse(text string) (topWords []string, countWords int) {
 func sortWordsByOccurrences(words []string) []string {
 	wordsMap, keys := createWordsMap(words)
 
-	sort.Slice(keys, func(i, j int) bool {
+	sort.SliceStable(keys, func(i, j int) bool {
 		return wordsMap[keys[i]] > wordsMap[keys[j]]
 	})
 	return keys
@@ -27,6 +27,10 @@ func createWordsMap(words []string) (map[string]int, []string) {
 	keys := make([]string, 0, len(words))
 
 	for _, word := range words {
+		word := strings.ToLower(word)
+		replacer := strings.NewReplacer(",", "", ".", "")
+		word = replacer.Replace(word)
+
 		occurrences, found := wordsMap[word]
 		if found {
 			wordsMap[word] = occurrences + 1
