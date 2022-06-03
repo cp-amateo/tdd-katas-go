@@ -1,5 +1,5 @@
 package fizzBuzz
 
 func FizzBuzz(number int) (result string) {
-	return ""
+	return "1"
 }
