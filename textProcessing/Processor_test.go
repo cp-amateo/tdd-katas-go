@@ -14,6 +14,7 @@ func Test_analyse(t *testing.T) {
 	}{
 		{"analyse Hello", "Hello", []string{"Hello"}, 1},
 		{"analyse Hello world", "Hello world", []string{"Hello", "world"}, 2},
+		{"analyse Hello world world", "Hello world world", []string{"world", "Hello"}, 3},
 	}
 
 	for _, test := range tests {
