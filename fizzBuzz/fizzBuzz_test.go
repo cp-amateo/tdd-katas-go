@@ -9,6 +9,7 @@ func TestFizzBuzz(t *testing.T) {
 		wantResult string
 	}{
 		{"convert_1_to_1", 1, "1"},
+		{"convert_2_to_2", 2, "2"},
 	}
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
