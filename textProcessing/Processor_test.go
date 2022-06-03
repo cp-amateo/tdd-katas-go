@@ -15,6 +15,10 @@ func Test_analyse(t *testing.T) {
 		{"Analyse Hello", "Hello", []string{"Hello"}, 1},
 		{"Analyse Hello world", "Hello world", []string{"Hello", "world"}, 2},
 		{"Analyse Hello world world", "Hello world world", []string{"world", "Hello"}, 3},
+		{"Analyse full text",
+			"Hello, this is an example for you to practice. You should grab\nthis text and make it as your test case.",
+			[]string{"you", "this", "your", "to", "text", "test", "should", "practice", "make", "it"},
+			21},
 	}
 
 	for _, test := range tests {
