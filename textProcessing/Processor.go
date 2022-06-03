@@ -1,5 +1,8 @@
 package textProcessing
 
-func analyse(test string) (topWords []string, countWords int) {
-	return []string{test}, 1
+import "strings"
+
+func analyse(text string) (topWords []string, countWords int) {
+	words := strings.Fields(text)
+	return words, len(words)
 }
