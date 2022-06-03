@@ -3,12 +3,19 @@ package fizzBuzz
 import "testing"
 
 func TestFizzBuzz(t *testing.T) {
-	t.Run("convert_1_to_1", func(t *testing.T) {
-		got := FizzBuzz(1)
-		want := "1"
-
-		if want != got {
-			t.Errorf("expectec FizzBuzz 1, got: %s", got)
-		}
-	})
+	tests := []struct {
+		name       string
+		arg        int
+		wantResult string
+	}{
+		{"convert_1_to_1", 1, "1"},
+	}
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			got := FizzBuzz(test.arg)
+			if test.wantResult != got {
+				t.Errorf("expectec FizzBuzz 1, got: %s", got)
+			}
+		})
+	}
 }
